@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Connect · Killa Whale (KW) Sports</title>
+<meta name="description" content="For partners, collaborators, and press. Reach Killa Whale (KW) Sports." />
+<link rel="icon" href="assets/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/favicon-180.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#000000;--navy:#161616;--steel:#E8E8E8;--ice:#FFFFFF;--paper:#F4F4F4;--muted:#9A9A9A;--hair:rgba(255,255,255,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(60% 50% at 50% 30%, rgba(255,255,255,.14), transparent 70%),
+      linear-gradient(180deg,#141414,#050505);
+    color:var(--paper);font-family:'Inter',system-ui,sans-serif;line-height:1.6;
+    min-height:100svh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .top{padding:22px 28px}
+  .back{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--ice);display:inline-flex;align-items:center;gap:8px}
+  .back:hover{color:#fff}
+  main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 28px 80px}
+  .card{max-width:560px}
+  .card img{width:84px;margin-bottom:26px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.55))}
+  .eyebrow{font-family:'Oswald',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.32em;font-size:.72rem;color:var(--ice);margin-bottom:10px}
+  h1{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(2.6rem,9vw,4.4rem);line-height:1;
+     color:#fff}
+  p.body{color:var(--muted);font-size:1.1rem;max-width:460px;margin:22px auto 0}
+  .btn{display:inline-flex;align-items:center;gap:9px;margin-top:34px;
+    font-family:'Oswald',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.13em;font-size:.86rem;
+    padding:15px 28px;border-radius:999px;background:#fff;color:#0A0A0A;
+    box-shadow:0 8px 24px rgba(0,0,0,.5);transition:.2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,255,255,.25)}
+  footer{padding:30px 28px;text-align:center;font-size:.74rem;color:var(--muted);letter-spacing:.04em}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+  <div class="top"><a class="back" href="index.html">← Back</a></div>
+  <main>
+    <div class="card">
+      <img src="assets/orca-icon.png" alt="Killa Whale Sports orca mark" />
+      <p class="eyebrow">Connect</p>
+      <h1>Let's talk.</h1>
+      <p class="body">Killa Whale (KW) Sports is building something across content, brand, and a physical home for competitors. If you are a potential partner, collaborator, or just want to reach us, send a note.</p>
+      <a class="btn" href="mailto:kwsportsnj@gmail.com?subject=Killa%20Whale%20Sports%20Inquiry">Email us</a>
+    </div>
+  </main>
+  <footer>© <span id="yr"></span> Killa Whale (KW) Sports. All rights reserved.</footer>
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
