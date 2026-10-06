@@ -108,7 +108,7 @@
     <div class="foot">Killa Whale (KW) Sports</div>
   </div>
 
-  <audio id="audio" src="the_reset.mp3" preload="auto"></audio>
+  <audio id="audio" src="the_reset.mp3" preload="auto" playsinline webkit-playsinline></audio>
 
 <script>
 (function(){
@@ -117,26 +117,49 @@
       stage=document.getElementById('stage'), end=document.getElementById('end'),
       audio=document.getElementById('audio'), replayBtn=document.getElementById('replayBtn');
 
+  function showEnd(){
+    orb.classList.remove('playing');
+    stage.style.display='none';
+    end.classList.add('show');
+  }
+
   function start(){
+    // Reset and load fresh (iOS sometimes needs an explicit load)
+    try { audio.load(); } catch(e){}
     audio.currentTime=0;
-    var p=audio.play();
     orb.classList.add('playing');
     status.textContent='Breathe';
     line.textContent='Follow the voice. Breathe with it. Let everything else fall away.';
     startBtn.style.display='none';
-    if(p&&p.catch){p.catch(function(){ /* autoplay blocked edge case; button stays */ });}
+
+    var p = audio.play();
+    if (p && p.then) {
+      p.then(function(){
+        // playing OK
+      }).catch(function(err){
+        // Playback was blocked or failed — recover visibly instead of dying silently
+        orb.classList.remove('playing');
+        startBtn.style.display='inline-block';
+        startBtn.textContent='Tap to Play';
+        status.textContent='Tap to Play';
+        line.textContent='Turn your volume up, then tap to begin.';
+      });
+    }
   }
 
-  audio.addEventListener('ended', function(){
-    orb.classList.remove('playing');
-    stage.style.display='none';
-    end.classList.add('show');
+  audio.addEventListener('ended', showEnd);
+
+  // Safety: if audio errors out (bad load), tell the user instead of silence
+  audio.addEventListener('error', function(){
+    status.textContent='Audio unavailable';
+    line.textContent='Having trouble loading. Please refresh and try again.';
   });
 
   startBtn.addEventListener('click', start);
   replayBtn.addEventListener('click', function(){
     end.classList.remove('show');
     stage.style.display='flex';
+    startBtn.textContent='Begin';
     start();
   });
 })();
